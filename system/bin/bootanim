@@ -4,3 +4,10 @@
 
 # •••••••••••••••••••••••••••••••••••
 
+if [ ! -f /data/adb/modules/SystemLessBootAnimation/system/media/bootanimation.zip ]; then echo "Systemless BootAnimation module is not Properly Installed, Exiting...."; exit 1; fi
+
+
+read
+
+
+
