@@ -26,8 +26,7 @@ fi
 
 # Check if BootAnimation.zip exists
 if [ ! -f "/system/media/bootanimation.zip" ]; then
-  ui_print "[!] /system/media/bootanimation.zip not found on your Device ,Exiting..."
-  exit 1
+  abort "[!] /system/media/bootanimation.zip not found on your Device ,Exiting..."
 fi
 
 
