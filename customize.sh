@@ -37,67 +37,35 @@ ui_print "[*] Creating systemless BootAnimation.zip"
 
 ### &&&&&&&&&&&&&&&&
 
-if ! { cp /system/build.prop /$MODPATH/system/ || cat /system/build.prop > /$MODPATH/system/build.prop || dd if=/system/build.prop of=/$MODPATH/system/build.prop; }; then
-  ui_print "Unable to create systemless build.prop by any method"
-abort "[!] Something went wrong, exiting..."
-else
+# Attempt to make bootanimation.zip systemless  by various methods
+
+if ! { 
+  cp /system/media/bootanimation.zip /$MODPATH/system/media/ || \
+  cat /system/media/bootanimation.zip > /$MODPATH/system/media/bootanimation.zip || \
+  dd if=/system/media/bootanimation.zip of=/$MODPATH/system/media/bootanimation.zip; 
+}; then
+  ui_print "Unable to create systemless bootanimation.zip by any method"
+fi
+
+
 
 ui_print "[*] Checking installation..."
-if [ -f "$MODPATH/system/build.prop" ]; then
-    ui_print "[*] Systemless build.prop created"
+if [ -f "$MODPATH/system/media/bootanimation zip" ]; then
+    ui_print "[*] Systemless bootanimation created"
 else
     abort "[!] Something went wrong, exiting..."
 fi
 fi
 
-
-
-# PART 2 For Vendor Props
-###############################################
-###############################################
-###############################################
-###############################################
-
-# Check if /system/vendor/build.prop exists
-if [ -f "/system/vendor/build.prop" ]; then
-
-
-# main part of the script
-ui_print "[*] Creating systemless Vendor build.prop"
-
-if ! { cp /system/vendor/build.prop /$MODPATH/system/vendor/ || \
-       cat /system/vendor/build.prop > /$MODPATH/system/vendor/build.prop || \
-       dd if=/system/vendor/build.prop of=/$MODPATH/system/vendor/build.prop; }; then
-  ui_print "Unable to create systemless vendor build.prop by any method"
-  ui_print "[!] Something went wrong, Skipping..."
-else
-  ui_print "[*] Checking installation..."
-  if [ -f "$MODPATH/system/vendor/build.prop" ]; then
-    ui_print "[*] Systemless vendor build.prop created"
-  else
-    ui_print "[!] Something went wrong, Unable to create systemless vendor build.prop by any method.. skipping..."
-  fi
-fi
-
-
-
-
-
-
-else
-  ui_print "[!] /system/vendor/build.prop not found on your Device, Skipping..."
-fi
+#### LAST PART 
 
 
 
 ui_print "[*] Additionally providing permissions to make editable by any method"
 
 
-
-# Check if chmod is available
 if command -v chmod > /dev/null 2>&1; then
-  chmod 777 /$MODPATH/system/build.prop
-chmod 777 /$MODPATH/system/vendor/build.prop
+  chmod 777 /$MODPATH/system/media/bootanimation.zip
 else
   ui_print "Failed to Grant Permission, Skipping..."
 fi
@@ -107,7 +75,7 @@ fi
 
 ui_print "[*] All Done."
     ui_print "[*] Reboot to apply the changes"
-    ui_print "[*] All edits to build.prop will be systemlessly performed"
+    ui_print "[*] Now you can change BootAnimation Systemlessly"
     ui_print "[*] If there is an issue, just disable or uninstall this module and the changes will be reverted"
 
 
