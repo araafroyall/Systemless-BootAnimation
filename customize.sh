@@ -49,7 +49,7 @@ fi
 
 
 ui_print "[*] Checking installation..."
-if [ -f "$MODPATH/system/media/bootanimation zip" ]; then
+if [ -f "$MODPATH/system/media/bootanimation.zip" ]; then
     ui_print "[*] Systemless bootanimation created"
 else
     abort "[!] Something went wrong, exiting..."
