@@ -52,7 +52,6 @@ if [ -f "$MODPATH/system/media/bootanimation.zip" ]; then
 else
     abort "[!] Something went wrong, exiting..."
 fi
-fi
 
 #### LAST PART 
 
