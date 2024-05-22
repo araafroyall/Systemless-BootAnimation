@@ -13,8 +13,6 @@ rm -rf /$MODPATH/README.md /$MODPATH/system/media/LICENSE
 
 if ! { mkdir -p "$MODPATH/system/media" || install -d "$MODPATH/system/media"; }; then
   echo "Failed to create directory: $MODPATH/system/media"
-else
-  ui_print " "
 fi
 
 
